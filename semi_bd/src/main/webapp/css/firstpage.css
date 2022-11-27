@@ -1,0 +1,81 @@
+@charset "UTF-8";
+       body{
+           margin:0px;
+       }
+       #container{
+           width:100%;
+           height:937px;;
+           display:flex;
+       }
+       #leftContainer{
+           background-image: url("firstimage.jpg");
+           background-size : 100% 100%;
+           height : 100%;
+           width : 64%;
+       }
+       #logo{
+           margin-top:15px;
+           margin-left:25px;
+       }
+       #rightContainer{
+           background-color: #d9dfd4;
+           width:36%;
+           height:100%;
+           /* text-align:center; */
+       }
+       #buttonContainer{
+          text-align:right;
+          margin-top:20px;
+          margin-right:20px;
+          height:300px;
+       }
+       #buttonContainer>button{
+           font-size:16px;
+           width:150px;
+           height:40px;
+           font-weight: bolder;
+           background-color: #075A2A;
+           color:white;
+           border:0px;
+       }
+       #searchContainer{
+           height:500px;
+           margin-left:5%;
+           margin-right:20%;
+       }
+       #searchContainer>div:first-child{
+           font-size:50px;
+           font-weight:bolder;
+       }
+       #searchContainer>div:last-child>input{
+           width:92%;
+           height:55px;
+           margin-top:10px;
+       }
+       #addressContainer{
+       		margin-top:50px;
+       		display:flex;
+       		justify-content: space-around;
+       }
+       #addressContainer select{
+       		height:50px;
+       		width:200px;
+       		font-size:23px;
+       }
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
