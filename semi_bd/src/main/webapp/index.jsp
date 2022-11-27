@@ -4,13 +4,13 @@
 
 <%
 	List<CenterCoordinate> list = (List<CenterCoordinate>)request.getAttribute("centerCoordinate");
-	if(list != null){
+/* 	if(list != null){
 		for(CenterCoordinate cc : list){
 			System.out.println(cc);
 		}
 	}else{
 		System.out.println("없당");
-	}
+	} */
 %>
 
 <!DOCTYPE html>
@@ -60,21 +60,24 @@
 </html>
 <script>
 	const gu = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구", "용산구","은평구", "종로구","중구","중랑구"];
-	$(()=>{
-		for(let i=0;i<gu.length;i++){
-			const guOption = $("<option>").val(gu[i]).text(gu[i]);
-			$("[name=gu]").append(guOption);
-		}	
+	$(()=>{	
 		<%if(list!=null){%>
+			$("[name=gu]").html("");
+			drawGu();
 			$("[name=gu]").val("<%=list.get(0).getGu()%>")
-		<%}else{%>
-		
+		<%} else {%>
+			drawGu();
 		<%}%>
 	})
 	const getGu = () =>{
 		let gu = $("[name=gu]").first().val();
 		location.replace('<%=request.getContextPath()%>/changedong.do?gu='+gu);
-		
+	}
+	const drawGu = () => {
+		for(let i=0;i<gu.length;i++){
+			const guOption = $("<option>").val(gu[i]).text(gu[i]);
+			$("[name=gu]").append(guOption);
+		}	
 	}
 
 </script>
