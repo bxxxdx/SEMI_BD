@@ -1,0 +1,108 @@
+@charset "UTF-8";
+		body{
+		font-family:"휴먼모음T";
+	}
+	
+	div,section,header,footer{padding:10px;}
+	
+	div#container{
+		background-color:#F0F0F0;
+		width:100%;
+		margin:0 auto;
+	}
+	
+	header{
+		background-color:#00BCD4;
+		height:130px;
+		position:relative;
+		padding:10px 0 0 0;
+	}
+	header h1{
+		margin-left : 10px;
+	}
+	
+	section#content{
+		background-color:#F5F5F5;
+		float:left;
+		width:100%;
+		min-height:500px;
+	}
+	
+	footer{
+		background-color:#00BCD4;
+		clear:both;
+		height:75px;
+		text-align:center;
+		padding-top:40px;
+	}
+
+	/* 로그인컨테이너 */
+	header div.login-container{width:250px; position:absolute; right: 0px; top: 10px;}
+
+	#loginFrm table{empty-cells:hide;}
+	#loginFrm input[type=submit]{width:60px; height:50px; color:white; background:#3300ff; position:absolute; top:10px;}
+	#saveId+label{font-size:12px;font-family:'고딕'}
+	
+	/* 메뉴관련스타일 */
+	header nav {background:#5283de; width:100%; margin-top:40px;}
+	
+	/* ul태그의 가운데정렬 */
+	ul.main-nav{
+		/* width:80%; */
+		display:table;
+		padding:0px;
+		margin:auto;
+	}
+	ul.main-nav li { 
+		list-style-type: none; 
+		width: 8em; 
+		height: 2em;
+		float: left; 
+		text-align: center; 
+		font-family: "휴먼모음T", sans-serif; 
+		border-left: 1px #00bcd4 solid;
+		background-color: #5283de; 
+	}
+	ul.main-nav li:last-of-type{border-right:1px #00bcd4 solid;;}
+	ul.main-nav li a {
+		display: block;
+		padding:.5em;
+		text-decoration: none;
+		color: #292929;
+	}
+	
+	/* hover시 배경색 변경 */
+	ul.main-nav li:hover{
+		background-color: #3300ff;
+	}
+	ul.main-nav li:hover > a{
+		color:#FFF; /* 글자색*/
+	}
+	/* 회원가입페이지 */
+    section#enroll-container {text-align:center;}
+    section#enroll-container input{margin:3px;}
+    section#enroll-container table{margin:0 auto;}
+    section#enroll-container table th {padding:0 10px; text-align:right;}
+    section#enroll-container table td {padding:0 10px; text-align:left;}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
