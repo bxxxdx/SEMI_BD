@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>session 쿠키쿠키</title>
+</head>
+<body>
+	<h1>쿠키에 대해 알아보자</h1>
+	<p>
+		서버 이용시에 필요한 데이터를 저장하는 기술,<br>
+		클라이언트의 컴퓨터에 데이터를 저장하고 서버 이용시 가져오는 구조<br>
+		문자열만 저장이 가능,<br> 
+	</p>
+	<p>
+		쿠키를 생성하는 방법<br>
+		Cookie 클래스를 이용해서 생성 -> 매개변수 있는 생성자를 이용<br>
+		값은 key:value 형식으로 저장<br>
+		예) Cookie c = new Cookie("key","value");<br>
+		HttpServletResponse 클래스의 addCookie() 메소드를 이용해서 전달해줘야함.<br>		
+	</p>
+	
+	<h3><a href="createcookie.do">쿠키생성하기</a></h3>
+	<h2>세션상세설정하기</h2>
+	<h3><a href="sessiontest.do">세션테스트하기</a></h3>
+	<h3><a href="sessioncheck.do">세션값확인하기</a></h3>
+	
+	<h2>request객체에서 제공하는 정보 가져오기</h2>
+	<p>
+		HttpRequestHeader에 있는 정보를 가져올 수 있다.<br>
+	</p>
+	<h3><a href="headerdata.do">header정보 가져오기</a></h3>
+	
+	<h3>DB와 연결해서 Servlet 적용하기</h3>
+	<form action="searchmember.do" method="post">
+		<input type="text" name="userId"><br>
+		<input type="password" name="password"><br>
+		<input type="submit" value="확인">
+	</form>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
