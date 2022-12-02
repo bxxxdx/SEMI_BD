@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>개인취향테스트</title>
+</head>
+<body>
+	<h3>개인취향테스트</h3>
+	<p>
+		당신의 취향을 테스트해볼게요!<br>
+		데이터를 입력 후 확인 버튼을 누르세요!
+	</p>
+	<form action="/01_servletdata/requestdispatcher.do" method="post">
+		<ul>
+			<li>
+				<label>
+					이름 <input type="text" name = "name">
+				</label>
+			</li>
+			<li>
+				<label>
+					나이 <input type="number" min = "0" name = "age">
+				</label>
+			</li>
+			<li>
+				<label>
+					키 <input type="text" name = "height">
+				</label>
+			</li>
+			<li>좋아하는색
+				<label>
+					<input type="radio" name = "color" value="pink"> 핑크색
+				</label>
+				<label>
+					<input type="radio" name = "color" value="orange"> 오렌지색
+				</label>
+				<label>
+					<input type="radio" name = "color" value="purple"> 보라색
+				</label>
+				<label>
+					<input type="radio" name = "color" value="green"> 초록색
+				</label>
+				<label>
+					<input type="radio" name = "color" value="blue"> 파랑색
+				</label>
+			</li>
+			<li>좋아하는동물
+				<label>
+					<input type="checkbox" name = "animal" value = "강아지"> 강아지
+				</label>
+				<label>
+					<input type="checkbox" name = "animal" value = "고양이"> 고양이
+				</label>
+				<label>
+					<input type="checkbox" name = "animal" value = "코끼리"> 코끼리
+				</label>
+				<label>
+					<input type="checkbox" name = "animal" value = "하마"> 하마
+				</label>
+				<label>
+					<input type="checkbox" name = "animal" value = "표범"> 표범
+				</label>
+				<label>
+					<input type="checkbox" name = "animal" value = "다람쥐"> 다람쥐
+				</label>
+			</li>
+			<li> 점심메뉴
+				<select name="lunch">
+					<option value="김치찌개">김치찌개</option>
+					<option value="쌀국수">쌀국수</option>
+					<option value="김밥">김밥</option>
+					<option value="라면">라면</option>
+				</select>
+			</li>
+			<li>
+				<input type="submit" value="제출"><br>
+				<input type="reset" value = "취소">
+			</li>
+		</ul>
+	</form>
+	
+	
+</body>
+</html>

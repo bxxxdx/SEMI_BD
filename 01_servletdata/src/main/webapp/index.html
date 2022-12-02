@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>서블릿데이터처리하기</title>
+</head>
+<body>
+	<h1>서블릿 객체 이용하기</h1>
+	<h2>get, post 방식으로 데이터 서버에 전송하기</h2>
+	<fieldset>
+		<legend>get방식</legend>
+		<form action="login.do" method="get">
+			<input type="text" name="userId"><br>
+			<input type="password" name="password"><br>
+			<input type="submit" value="데이터전송">
+		</form>
+	</fieldset>
+	<fieldset>
+		<legend>post 방식</legend>
+		<form action="login.do" method="post">
+			<input type="text" name="userId"><br>
+			<input type="password" name="password"><br>
+			<input type="submit" value="데이터전송">
+		</form>
+	</fieldset>
+	
+	
+	<h2>클라이언트가 보낸 데이터 가져오기</h2>
+	<h3><a href="views/testPerson.html">개인취향테스트</a></h3>
+	<h2>클라이언트에서 데이터는 querystring방식으로 보낼 수 있다.</h2>
+	<h3><a href="/01_servletdata/querystring.do?boardNo=2">2번 게시물</a></h3>	
+	<button onclick="location.assign('/01_servletdata/querystring.do?boardNo=3');">이동</button>
+	
+	<h2>서블릿에서 페이지를 변경하는 방법</h2>
+	<ul>
+		<li>RequestDispatcher 클래스의 forward() 메소드 이용하기</li>
+		<li>HttpServletResponse.sendRedirect() 메소드 이용하기</li>
+	</ul>
+	
+	<h3><a href="views/testPerson2.html">서버내에서 다른 서블릿 호출하기-RequestDispatcher</a></h3>
+	<h3><a href="views/testPerson3.html">서버내에서 다른 서블릿 호출하기(재요청)-sendRedirect</a></h3>
+	<br>
+	<h2>서버에서 데이터를 저장하는 객체</h2>
+	<ul>
+		<li>
+			HttpServletRequest : 1회용 데이터를 저장하는 저장소<br>
+			* 1회용 => 요청하고 응답이 완료될때 까지만 사용
+		</li>
+		<li>
+			HttpSession : 원하는 시점까지 데이터를 유지하는 저장소<br>
+			* 개발자가 원하는 시점에 삭제하거나 혹은 설정값에 의해 자동으로 삭제될 때 까지 이용<br>
+			* 로그인에 주로 쓰인다, 혹은 드물지만 오늘 본 상품 등에도 이용할 수는 있다.
+		</li>
+		<li>
+			ServletContext : 서버가 실행되고 종료될때까지 유지하는 저장소
+		</li>
+		<li>
+			우선순위는 적힌 순서대로라고 보면 된다. 클라이언트 쪽에 저장되는 요소는 쿠키도 있음
+		</li>
+	</ul>
+	<p>
+		저장 방법<br>
+		setAttribute(String, Object) 메소드로 key:value 형식으로 저장함<br>
+		getAttribute("key") 메소드로 값을 가져옴 -> * 반환형이 Object로 형변환을 해서 사용해야 함.
+	</p>
+	<h3><a href="sharedata.do">데이터저장객체활용</a></h3>
+	
+	<h2>로그인 구현하기</h2>
+	<form action="loginend.do" method="post">
+		<input type="text" name="userId"><br>
+		<input type="password" name="password"><br>
+		<input type="submit" value="로그인">
+		<input type="reset" value="취소">
+	</form>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>
