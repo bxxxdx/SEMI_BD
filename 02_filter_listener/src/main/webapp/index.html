@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>filter와 listener</title>
+</head>
+<body>
+	<h2>필터 적용하기</h2>
+	<p>
+		클라이언트가 보낸 요청을 중간에 검토하는 기능<br>
+		예) 사용자의 이용권한확인, 로그인 여부 체크, request, response 인코딩처리<br>
+		다수의 서블릿에 공통으로 적용할 사항(기능)에 대해 필터로 구현하고 처리<br>
+	</p>
+	<p>
+		필터구현방식 -> 일반클래스에 Filter 인터페이스를 구현하여 정의<br>
+		doFilter() 메소드에 공통으로 적용할 기능을 구현<br>
+		<br>
+		적용하기<br>
+		1. web.xml에 설정 -> Servlet 등록 방식과 유사<br>
+		2. 어노테이션(@)을 이용하는 방식 -> @WebFilter()<br>
+		<br>
+		적용할 서블릿 지정<br>
+		url-pattern이나 서블릿명으로 지정이 가능!<br>
+	</p>
+	<p>
+		doFilter 메소드는 세개의 매개변수를 가지고 있음<br>
+		1. ServletRequest : HttpServletRequest의 부모로 request가 제공하는 모든 메소드를 가지고 있음.<br>
+		2. ServletResponse : HttpServletResponse의 부모로 response가 제공하는 모든 메소드를 가지고 있음.<br>
+		3. FilterChain : 다음 필터 또는 서블릿을 호출하는 메소드를 제공 doFilter(request, response)<br>
+	</p>
+	
+	<h3>필터 테스트 하기</h3>
+	<form action="filtertest" method = "post">
+		<input type="text" name="data">
+		<input type="submit" name="데이터전송">
+	</form>
+	<br>
+	<form action="msgservice.do" method = "post">
+		<textarea cols="20" rows="3" name="msg"></textarea>
+		<input type="submit" value="메세지 저장">
+	</form>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+</body>
+</html>

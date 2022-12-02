@@ -38,8 +38,6 @@ public class CenterCoordinateDao {
 		try {
 			pstmt = conn.prepareStatement(sql.getProperty("searchGu")); 
 			pstmt.setString(1, gu);
-			System.out.println(gu);
-			System.out.println(sql.getProperty("searchGu"));
 			
 			rs = pstmt.executeQuery();
 			
@@ -55,6 +53,28 @@ public class CenterCoordinateDao {
 			close(pstmt);
 		}
 		return result;
+	}
+	
+	public CenterCoordinate searchCenterCoordinate(Connection conn, String gu, String dong) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		CenterCoordinate cc = null;
+		try {
+			pstmt = conn.prepareStatement(sql.getProperty("searchGuDong"));
+			pstmt.setString(1, gu);
+			pstmt.setString(2, dong);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				cc = getRsData(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		return cc;
 	}
 	
 	

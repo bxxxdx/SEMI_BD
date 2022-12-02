@@ -23,4 +23,12 @@ public class CenterCoordinateService {
 
 		return result;
 	}
+	
+	public CenterCoordinate searchCenterCoordinate(String gu, String dong) {
+		Connection conn = getConnection();
+		CenterCoordinate cc = CenterCoordinateDao.getCenterCoordinateDao().searchCenterCoordinate(conn, gu, dong);
+		close(conn);
+	
+		return cc;
+	}
 }

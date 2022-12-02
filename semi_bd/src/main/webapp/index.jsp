@@ -4,13 +4,6 @@
 
 <%
 	List<CenterCoordinate> list = (List<CenterCoordinate>)request.getAttribute("centerCoordinate");
-/* 	if(list != null){
-		for(CenterCoordinate cc : list){
-			System.out.println(cc);
-		}
-	}else{
-		System.out.println("없당");
-	} */
 %>
 
 <!DOCTYPE html>
@@ -34,25 +27,27 @@
             </div>
             <div id="searchContainer">
                 <div>어디를 찾고 계신가요?</div>
-                <div id="addressContainer">
-                	<div>
-                		<select name="gu" onchange="getGu();">
-                			<option value="-">구 선택</option>
-                		</select>
-                	</div>
-                	&nbsp;&nbsp;&nbsp;
-                	<div>
-                		<select name="dong">
-                			<%if(list!=null){ %>
-                				<%for(CenterCoordinate cc : list){ %>
-                					<option value = "<%=cc.getDong()%>"><%=cc.getDong()%></option>
-                				<%} %>
-                			<%} else {%>
-                				<option value="-">동 선택</option>
-                			<%} %>
-                		</select>
-                	</div>
-                </div>
+                <form action="<%=request.getContextPath()%>/searchAddress.do" method="get" onsubmit="return fn_addressCheck();" >
+                	<div id="addressContainer">
+	                	<div>
+	                		<select name="gu" onchange="getGu();">
+	                			<option value="-">구 선택</option>
+	                		</select>
+	                	</div>
+	                	<div>
+	                		<select name="dong">
+	                			<%if(list!=null){ %>
+	                				<%for(CenterCoordinate cc : list){ %>
+	                					<option value = "<%=cc.getDong()%>"><%=cc.getDong()%></option>
+	                				<%} %>
+	                			<%} else {%>
+	                				<option value="-">동 선택</option>
+	                			<%} %>
+	                		</select>
+	                	</div>
+	                	<input type="submit" value ="제출">
+					</div>
+                </form>
             </div>
         </div>
     </div>
@@ -78,6 +73,14 @@
 			const guOption = $("<option>").val(gu[i]).text(gu[i]);
 			$("[name=gu]").append(guOption);
 		}	
+	}
+	const fn_addressCheck = () => {
+		let gu = $("[name=gu]").val();
+		let dong = $("[name=dong]").val();
+		if(gu == "-" || dong == "-"){
+			alert("동과 구를 정확히 선택해주세요");
+			return false;
+		}
 	}
 
 </script>
