@@ -11,7 +11,7 @@
 <%@ include file = "/views/common/header.jsp" %>
 <section>
     <div id="notice-container">
-    <form action="<%=request.getContextPath()%>/notice/writeNoticeEnd.do" method="post" onsubmit="return noticeCheck();">
+    <form action="<%=request.getContextPath()%>/notice/writeNoticeEnd.do" method="post" onsubmit="return noticeCheck();" enctype="multipart/form-data">
         <table id="tbl-notice">
         <tr>
             <th>제 목</th>
