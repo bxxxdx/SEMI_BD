@@ -43,7 +43,12 @@ public class MemberListServlet extends HttpServlet {
 			cPage = 1;
 		}
 		// 페이지당 데이터 출력 갯수
-		int numPerpage = 5;
+		int numPerpage;
+		try {
+			numPerpage = Integer.parseInt(request.getParameter("numPerpage"));
+		} catch (NumberFormatException e) {
+			numPerpage = 10;
+		}
 		
 		List<Member> list = AdminService.getAdminService().searchMemberAll(cPage, numPerpage);
 		

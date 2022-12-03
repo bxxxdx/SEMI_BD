@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="01_servletdata/src/main/java"/>
+	<classpathentry kind="src" path="02_filter_listener/src/main/java"/>
+	<classpathentry kind="src" path="03_session_cookie/src/main/java"/>
+	<classpathentry kind="src" path="04_jsp/src/main/java"/>
+	<classpathentry kind="src" path="05_HelloMVC/src/main/java"/>
+	<classpathentry kind="src" path="semi_bd/src/main/java"/>
+	<classpathentry kind="lib" path="03_session_cookie/src/main/webapp/WEB-INF/lib/ojdbc8.jar"/>
+	<classpathentry kind="lib" path="04_jsp/src/main/webapp/WEB-INF/lib/lombok-1.18.24.jar"/>
+	<classpathentry kind="lib" path="04_jsp/src/main/webapp/WEB-INF/lib/ojdbc8.jar"/>
+	<classpathentry kind="lib" path="05_HelloMVC/src/main/webapp/WEB-INF/lib/cos.jar"/>
+	<classpathentry kind="lib" path="05_HelloMVC/src/main/webapp/WEB-INF/lib/lombok-1.18.24.jar"/>
+	<classpathentry kind="lib" path="05_HelloMVC/src/main/webapp/WEB-INF/lib/ojdbc8.jar"/>
+	<classpathentry kind="lib" path="semi_bd/src/main/webapp/WEB-INF/lib/lombok-1.18.24.jar"/>
+	<classpathentry kind="lib" path="semi_bd/src/main/webapp/WEB-INF/lib/ojdbc8.jar"/>
+	<classpathentry kind="output" path="semi_bd/src/main/webapp/WEB-INF/classes"/>
+</classpath>

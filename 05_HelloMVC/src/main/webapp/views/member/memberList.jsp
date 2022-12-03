@@ -115,6 +115,9 @@
 				$("div#search-container>div").hide();
 				$("#search-"+type).css("display","inline-block");
 			})	
+			
+			
+			
 		})
 	</script>
 <%@ include file="/views/common/footer.jsp" %>
