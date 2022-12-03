@@ -17,7 +17,11 @@ import com.web.member.model.vo.Member;
 /**
  * Servlet Filter implementation class LoginNoticeFilter
  */
-@WebFilter("/notice/*")
+@WebFilter(urlPatterns = {
+		"/notice/*"
+		,"/board/writeBoardEnd.do"
+		,"/board/writeBoard.do"
+		})
 public class LoginNoticeFilter extends HttpFilter implements Filter {
        
     /**

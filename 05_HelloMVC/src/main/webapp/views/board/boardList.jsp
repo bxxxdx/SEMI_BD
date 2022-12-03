@@ -36,7 +36,7 @@
 			<%for(int i=0;i<list.size();i++){ %>
 				<tr>
 					<td><%=list.get(i).getBoardNo() %></td>
-					<td><%=list.get(i).getBoardTitle() %></td>
+					<td><a href=""><%=list.get(i).getBoardTitle() %></a></td>
 					<td><%=list.get(i).getBoardWriter() %></td>
 					<td><%=list.get(i).getBoardDate() %></td>
 					<td><%=list.get(i).getBoardRenamedFileName() %></td>

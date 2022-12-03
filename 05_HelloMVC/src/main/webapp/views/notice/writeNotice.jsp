@@ -9,8 +9,9 @@
     table#tbl-notice td {border:1px solid; padding: 5px 0 5px 10px; text-align:left;}
 </style>
 <%@ include file = "/views/common/header.jsp" %>
-<section>
-    <div id="notice-container">
+
+<section id="notice-container">
+    <h2>공지사항 작성</h2>
     <form action="<%=request.getContextPath()%>/notice/writeNoticeEnd.do" method="post" onsubmit="return noticeCheck();" enctype="multipart/form-data">
         <table id="tbl-notice">
         <tr>
@@ -31,13 +32,13 @@
         </tr>
         <tr>
             <th colspan="2">
-                <input type="submit" value="등록하기" onclick="">
+                <input type="submit" value="등록하기">
             </th>
         </tr>
     </table>
     </form>
-    </div>    
-</section>
+</section>    
+
 <script>
 	const noticeCheck = () => {
 		if($("[name=noticeTitle]").val() == ""){
