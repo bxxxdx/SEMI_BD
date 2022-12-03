@@ -41,7 +41,6 @@ public class NoticeListServlet extends HttpServlet {
 		int numPerpage = 5;
 		
 		List<Notice> list = NoticeService.getNoticeService().searchNoticeAll(cPage, numPerpage);
-		list.forEach(v->System.out.println(v));
 		
 		//pageBar 만들어서 반환하기
 		//1. totalData : 전체 페이지 수를 알기 위해

@@ -27,7 +27,7 @@
         </tr>
         <tr>
             <th>첨부파일</th>
-            <td><input type="file" value="<%=n.getFilePath()%>"></td>
+            <td><input type="file" name="upfile" value="<%=n.getFilePath()%>"></td>
         </tr>
         <tr>
             <th>내 용</th>

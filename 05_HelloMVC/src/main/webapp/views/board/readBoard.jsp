@@ -46,7 +46,7 @@
 		<%if(loginMember != null && (loginMember.getUserId().equals(b.getBoardWriter()) || loginMember.getUserId().equals("admin"))) {%>
 			<tr>
 				<th colspan="2">
-					  <input type="button" value="수정하기" onclick="location.replace('')">
+					  <input type="button" value="수정하기" onclick="location.replace('<%=request.getContextPath()%>/board/updateBoard.do?boardNo=<%=b.getBoardNo()%>')">
 			          <input type="button" value="삭제하기" onclick="fn_delete();">
 				</th>
 			</tr>
