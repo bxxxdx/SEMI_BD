@@ -56,8 +56,8 @@
         </div>
         <div id="numPerpage-container">
         	페이지당 회원수 : 
-        	<form id="numPerFrm" action="">
-        		<select name="numPerpage" id="numPerpage">
+        	<form id="numPerFrm" action="<%=request.getContextPath()%>/admin/memberList.do">
+        		<select name="numPerpage" id="numPerpage" onchange="this.form.submit()">
         			<option value="10">10</option>
         			<option value="5" >5</option>
         			<option value="3" >3</option>
@@ -115,9 +115,7 @@
 				$("div#search-container>div").hide();
 				$("#search-"+type).css("display","inline-block");
 			})	
-			
-			
-			
+			$("#numPerpage").val('<%=request.getParameter("numPerpage")!=null?request.getParameter("numPerpage"):"10"%>');
 		})
 	</script>
 <%@ include file="/views/common/footer.jsp" %>
