@@ -44,4 +44,13 @@ public class BoardService {
 		
 		return result;
 	}
+	
+	public Board searchBoardNo(int boardNo) {
+		Connection conn = getConnection();
+		Board b = BoardDao.getBoardDao().searchBoardNo(conn, boardNo);
+		
+		close(conn);
+		
+		return b;
+	}
 }

@@ -89,7 +89,26 @@ public class BoardDao {
 		return result;
 	}
 	
-	
+	public Board searchBoardNo(Connection conn, int boardNo) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		Board b = null;
+		try {
+			pstmt = conn.prepareStatement(sql.getProperty("searchBoardNo"));
+			pstmt.setInt(1, boardNo);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				b = getRsData(rs);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(rs);
+			close(pstmt);
+		}
+		
+		return b;
+	}
 	
 	
 	
