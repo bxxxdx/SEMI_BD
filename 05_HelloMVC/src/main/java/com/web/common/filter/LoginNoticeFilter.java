@@ -21,6 +21,10 @@ import com.web.member.model.vo.Member;
 		"/notice/*"
 		,"/board/writeBoardEnd.do"
 		,"/board/writeBoard.do"
+		,"/board/updateBoard.do"
+		,"/board/updateBoardEnd.do"
+		,"/board/deleteBoard.do"
+		
 		})
 public class LoginNoticeFilter extends HttpFilter implements Filter {
        

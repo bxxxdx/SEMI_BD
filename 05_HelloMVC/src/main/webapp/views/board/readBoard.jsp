@@ -60,7 +60,7 @@
 	const fn_delete = () => {
 		let result = confirm("게시물을 정말 삭제하시겠습니까?");
 		if(result) {
-			location.replace("");			
+			location.replace("<%=request.getContextPath()%>/board/deleteBoard.do?boardNo=<%=b.getBoardNo()%>");			
 		}
 	}
 </script>
