@@ -20,7 +20,7 @@ public class NoticeDao {
 	private Properties sql = new Properties();
 	private NoticeDao() {
 		try {
-			String path = AdminDao.class.getResource("/sql/notice/notice_sql.properties").getPath();
+			String path = NoticeDao.class.getResource("/sql/notice/notice_sql.properties").getPath();
 			sql.load(new FileReader(path));
 			//sql properties 파일에 데이터를 저장할땐 서버를 끄고 하자. 캐시를 남기기 때문임
 		} catch (IOException e) {
@@ -154,7 +154,7 @@ public class NoticeDao {
 	
 	
 	
-	public Notice getRsData(ResultSet rs) {
+	private Notice getRsData(ResultSet rs) {
 		Notice n = null;
 		try {
 			n = Notice.builder()

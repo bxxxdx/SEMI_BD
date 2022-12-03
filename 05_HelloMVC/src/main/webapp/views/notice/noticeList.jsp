@@ -17,7 +17,7 @@
        <h2>공지사항</h2>
        <%if(loginMember != null && loginMember.getUserId().equals("admin")){ %>
 	       <div style="text-align:right">
-	       		<button onclick="location.replace('<%=request.getContextPath()%>/notice/writeNotice.do')">글쓰기</button>
+	       		<button onclick="location.replace('<%=request.getContextPath()%>/notice/writeNotice.do')">공지작성</button>
 	       </div>
        <%} %>
        <table id="tbl-notice">
