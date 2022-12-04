@@ -9,6 +9,7 @@
 <!-- 폰트 -->
 <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
 <script src = "https://code.jquery.com/jquery-3.6.1.min.js"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?622c2a9d3d39799df3c6db829e75db1d"></script>
 </head>
 <style>
     header{

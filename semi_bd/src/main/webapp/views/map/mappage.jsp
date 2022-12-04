@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file ="/views/common/header.jsp" %>
 <%@ page import="com.centercoordinate.model.vo.CenterCoordinate" %>
 <%
 	CenterCoordinate cc = (CenterCoordinate)request.getAttribute("cc");
 %>
-<%@ include file ="/views/common/header.jsp" %>
 	<style>
 		section{
 	        width:100%;
@@ -63,7 +63,7 @@
 	        border:2px solid #D9DFD4;
 	        width:230px;
 	        height:280px;
-	        z-index: 1;
+	        z-index: 10;
 	    }
 	    #layerContainer p{
 	        font-size:16px;
@@ -117,7 +117,7 @@
         </div>
     </nav>
 	<section>
-	     <div id="layerContainer">
+	     <!-- <div id="layerContainer">
 	         <div class="buttonLayer" id="rentType">
 	             <div>
 	                 <p>거래유형</p>
@@ -175,9 +175,9 @@
 	                 &nbsp;&nbsp;
 	                 <button style="width:100px;">적용</button>
 	             </div>
-	         </div>
+	         </div> 
 	         
-	     </div>
+	     </div> -->
 	     
 	     
 	     <div id="mapContainer">
@@ -188,25 +188,32 @@
 	     </div>
 	</section>
 	</body>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=fc286e48bda3fa00c9aebc43a2b9914e&libraries=services"></script>
-    <script>
-        var mapContainer = document.getElementById('mapContainer'), // 지도를 표시할 div 
-        mapOption = { 
-            center: new kakao.maps.LatLng(<%=cc.getLatitude()%>, <%=cc.getLongitude()%>), // 지도의 중심좌표
-            level: 2 // 지도의 확대 레벨
-        };
+	<script>
+		var mapContainer = document.getElementById('mapContainer'), // 지도를 표시할 div 
+			mapOption = { 
+				center: new kakao.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+				level: 3 // 지도의 확대 레벨
+			}; 
 
-        var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+		// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
+		var map = new kakao.maps.Map(mapContainer, mapOption); 
 
-        const openLayer = (e) => {
-            $("div.buttonLayer").css("z-index","10");
-            console.log($(e.target).attr('id'));
-            switch($(e.target).val()){
-            case "rentType" : $("div#rentType").css("z-index","10");break;
-            case "propertyStructure" : $("div#propertyStructure").css("z-index","10");break;
-            case "applianceOption" : $("div$applianceOption").css("z-index","10");break;
-            }
-        };
+		// let flag = false;
+		// $("div.buttonLayer").hide();
+        // const openLayer = (e) => {
+		// 	if(flag){
+		// 		$("div.buttonLayer").hide();
+		// 	}else{
+		// 		$("div.buttonLayer").show();
+		// 	}
+		// 	flag = !flag;
+        //     console.log($(e.target).attr('id'));
+        //     switch($(e.target).val()){
+        //     case "rentType" : $("div#rentType").show();break;
+        //     case "propertyStructure" : $("div#propertyStructure").show();break;
+        //     case "applianceOption" : $("div$applianceOption").show();break;
+        //     }
+        // };
 
         
         
