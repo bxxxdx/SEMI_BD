@@ -4,6 +4,8 @@
 <%@ page import="com.web.member.model.vo.Member, java.util.List" %>
 <%
 	List<Member> list = (List<Member>)request.getAttribute("members");
+	String searchType = request.getParameter("searchType");
+	String searchKeyword = request.getParameter("searchKeyword");
 %>
 <style type="text/css">
 	div#search-container {margin:0 0 10px 0; padding:3px; 
@@ -56,13 +58,14 @@
         </div>
         <div id="numPerpage-container">
         	페이지당 회원수 : 
-        	<form id="numPerFrm" action="<%=request.getContextPath()%>/admin/memberList.do">
+        	<form id="numPerFrm" action="<%=request.getContextPath()%>/admin/searchMember">
         		<select name="numPerpage" id="numPerpage" onchange="this.form.submit()">
         			<option value="10">10</option>
         			<option value="5" >5</option>
         			<option value="3" >3</option>
         		</select>
-        		
+        		<input type="hidden" name="searchType" value="<%=request.getParameter("searchType")%>">
+        		<input type="hidden" name="searchKeyword" value ="<%=request.getParameter("searchKeyword")%>">
         	</form>
         </div>
        <table id="tbl-member">
@@ -117,6 +120,17 @@
 				$("#search-"+type).css("display","inline-block");
 			})	
 			$("#numPerpage").val('<%=request.getParameter("numPerpage")!=null?request.getParameter("numPerpage"):"10"%>');
+			<%if(searchType != null){%>
+				$("div#search-container>#searchType").val("<%=searchType%>");
+				$("div#search-container>div").hide();
+				$("#search-<%=searchType%>").css("display","inline-block");
+				<%if(searchType.equals("userId") || searchType.equals("userName")){%>
+					$("#search-<%=searchType%> input[name=searchKeyword]").val("<%=searchKeyword%>");
+				<%} else if(searchType.equals("gender")){%>
+					$("#search-<%=searchType%> input[name=searchKeyword]:input[value=<%=searchKeyword%>]").prop("checked",true);
+				<%}%>
+			<%} %>
+			console.log($("#search-<%=searchType%> input[name=searchKeyword]:input[value=<%=searchKeyword%>]"));
 		})
 	</script>
 <%@ include file="/views/common/footer.jsp" %>

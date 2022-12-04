@@ -43,14 +43,18 @@ public class SearchMemberListServlet extends HttpServlet {
 		}
 		
 		// 페이지당 데이터 출력 갯수
-		int numPerpage = 5;
+		int numPerpage;
+		try {
+			numPerpage = Integer.parseInt(request.getParameter("numPerpage"));
+		} catch (NumberFormatException e) {
+			numPerpage = 10;
+		}
 		
 		List<Member> list = AdminService.getAdminService().searchMemberList(type, keyword, cPage, numPerpage);
 		request.setAttribute("members", list);
 		//pageBar 만들어서 반환하기
 		//1. totalData : 전체 페이지 수를 알기 위해
 		int totalData = AdminService.getAdminService().selectMemberCount(type, keyword);
-		System.out.println("totalData = " + totalData);
 		//pageBar html코드를 저장할 수 있는 변수 선언
 		String pageBar = "";
 		//1. pageBar의 번호 갯수를 정한다.
@@ -66,13 +70,13 @@ public class SearchMemberListServlet extends HttpServlet {
 		if(pageNo==1) {
 			pageBar += "<span>[이전] </span>";
 		} else {
-			pageBar += "<a href='"+request.getRequestURI()+"?searchType="+type+"&searchKeyword="+keyword+"&cPage="+(pageNo-1)+"'>[이전] </a>";
+			pageBar += "<a href='"+request.getContextPath()+"/admin/searchMember?searchType="+type+"&searchKeyword="+keyword+"&cPage="+(pageNo-1)+"&numPerpage="+numPerpage+"'>[이전] </a>";
 		}
 		while(!(pageNo>pageEnd||pageNo>totalPage)) {
 			if(cPage==pageNo) {
 				pageBar += "<span>"+pageNo+" </span>";
 			} else { 
-				pageBar += "<a href='"+request.getRequestURI()+"?searchType="+type+"&searchKeyword="+keyword+"&cPage="+pageNo+"'>"+pageNo+" </a>";
+				pageBar += "<a href='"+request.getContextPath()+"/admin/searchMember?searchType="+type+"&searchKeyword="+keyword+"&cPage="+pageNo+"&numPerpage="+numPerpage+"'>"+pageNo+" </a>";
 			}
 			pageNo++;
 		}
@@ -80,11 +84,11 @@ public class SearchMemberListServlet extends HttpServlet {
 		if(pageNo>totalPage) {
 			pageBar += "<span> [다음]</span>";
 		} else {
-			pageBar += "<a href='"+request.getRequestURI()+"?searchType="+type+"&searchKeyword="+keyword+"&cPage="+pageNo+"'> [다음]</a>";
+			pageBar += "<a href='"+request.getContextPath()+"/admin/searchMember?searchType="+type+"&searchKeyword="+keyword+"&cPage="+pageNo+"&numPerpage="+numPerpage+"'> [다음]</a>";
 		}
 		request.setAttribute("pageBar",pageBar);
 
-		request.getRequestDispatcher("/views/member/memberList.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/member/searchMemberList.jsp").forward(request, response);
 	}
 
 	/**
