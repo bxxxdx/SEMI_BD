@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+nav{
+    display:flex;
+    justify-content: space-between;
+    height:39px;
+}
+div#searchContainer{
+    display:flex;
+    width:500px;
+}
+div#searchContainer>div{
+    margin:10px;
+}
+div#gudongContainer{
+    margin:10px;
+}
+div.option{
+   position:absolute;
+}
+div.option div{ 
+    position:relative;
+    height:230px;
+    width:150px;
+    z-index : 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
