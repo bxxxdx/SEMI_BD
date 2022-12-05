@@ -34,7 +34,7 @@ public class SearchAddressServlet extends HttpServlet {
 		String dong = request.getParameter("dong");
 		CenterCoordinate cc = CenterCoordinateService.getCenterCoordinateService().searchCenterCoordinate(gu, dong);
 		request.setAttribute("cc", cc);
-		request.getRequestDispatcher("/views/map/mappage.jsp").forward(request, response);;
+		request.getRequestDispatcher("/views/map/test.jsp").forward(request, response);;
 	}
 
 	/**

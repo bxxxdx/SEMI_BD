@@ -1,0 +1,93 @@
+@charset "UTF-8";
+section{
+    width:100%;
+    height:750px;
+    display:flex;
+}
+#mapContainer{
+    width:100%;
+    height:750px;
+}
+#listContainer{
+    width:500px;
+    height:750px;
+}
+#listContainer{
+    background-color: white;
+}
+nav{
+    display:flex;
+/* justify-content: space-between; */
+}
+nav>div{
+    display:flex;
+    
+}
+p{
+    margin:0px;
+}
+#searchContainer{
+    margin-left:auto;
+}
+#searchContainer>button{
+    width:40px;
+    height:40px;
+}
+#searchContainer>p{
+    margin-top:9px;
+}
+section{
+    position: relative;
+}
+#mapContaier{
+    position: absolute;
+}
+#layerContainer{
+    position:absolute;
+    width:800px;
+    height: 400px;
+}
+/* #layerContainer div{
+    position: absolute;
+} */
+.buttonLayer{
+    position: absolute;
+    background-color: white;
+    border:2px solid #D9DFD4;
+    width:230px;
+    height:280px;
+    z-index: 10;
+}
+#layerContainer p{
+    font-size:16px;
+    font-weight:bolder;
+}
+.buttonLayer>div:first-child>p{
+    font-size:23px;
+    font-weight:bolder;
+    margin-top:8px;
+}
+.buttonLayer>div{
+    display:flex;
+    margin-left:10px;
+    margin-right:10px;
+    margin-top:8px;
+}
+.buttonLayer>.twoSpace{
+    justify-content: space-between;
+}
+#propertyStructure {
+    position:absolute;
+    left:250px;
+}
+#applianceOption{
+	position:absolute;
+	left:450px;
+}
+#layerContainer>.buttonLayer>div:first-child{
+    display: flex;
+    justify-content: space-between;
+}
+div.buttonContainer>button.layerBtn{
+	margin-right:30px;
+}
