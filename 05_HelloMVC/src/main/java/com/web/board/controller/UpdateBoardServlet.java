@@ -32,7 +32,7 @@ public class UpdateBoardServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		
-		Board b = BoardService.getBoardService().searchBoardNo(boardNo);
+		Board b = BoardService.getBoardService().searchBoardNo(boardNo, true);
 		
 		request.setAttribute("board", b);
 		

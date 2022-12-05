@@ -1,5 +1,7 @@
 package com.web.board.model.dao;
 
+import static com.web.common.JDBCTemplate.close;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
@@ -10,9 +12,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
-import static com.web.common.JDBCTemplate.*;
-
 import com.web.board.model.vo.Board;
+import com.web.board.model.vo.BoardComment;
 
 public class BoardDao {
 	private static BoardDao boardDao;
@@ -110,6 +111,21 @@ public class BoardDao {
 		return b;
 	}
 	
+	public int updateReadCount(Connection conn, int boardNo) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql.getProperty("updateReadCount"));
+			pstmt.setInt(1, boardNo);
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		return result;
+	}
+	
 	public int updateBoard(Connection conn, Board b) {
 		PreparedStatement pstmt = null;
 		int result = 0;
@@ -144,6 +160,67 @@ public class BoardDao {
 		return result;
 	}
 	
+	public int insertBoardComment(Connection conn, BoardComment bc) {
+		PreparedStatement pstmt = null;
+		int result = 0;
+		try {
+			pstmt = conn.prepareStatement(sql.getProperty("insertBoardCommment"));
+			pstmt.setInt(1,bc.getBoardCommentLevel());
+			pstmt.setString(2, bc.getBoardCommentWriter());
+			pstmt.setString(3, bc.getBoardCommentContent());
+			pstmt.setInt(4, bc.getBoardRef());
+			//pstmt.setInt(5, bc.getBoardCommentRef()==0?null:bc.getBoardCommentRef());
+			pstmt.setString(5, bc.getBoardCommentRef()==0?null:String.valueOf(bc.getBoardCommentRef()));
+			result = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close(pstmt);
+		}
+		
+		return result;
+	}
+	
+	public List<BoardComment> searchBoardComments(Connection conn, int boardRef) {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<BoardComment> bcs = null;
+		try {
+			pstmt = conn.prepareStatement(sql.getProperty("searchBoardComments"));
+			pstmt.setInt(1, boardRef);
+			rs = pstmt.executeQuery();
+			bcs = new ArrayList();
+			while(rs.next()) {
+				bcs.add(getRsData_BoardComment(rs));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return bcs;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	private Board getRsData(ResultSet rs) throws SQLException {
@@ -158,15 +235,16 @@ public class BoardDao {
 				.boardReadCount(rs.getInt("BOARD_READCOUNT"))
 				.build();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	private BoardComment getRsData_BoardComment(ResultSet rs) throws SQLException {
+		return BoardComment.builder()
+						.boardCommentNo(rs.getInt("BOARD_COMMENT_NO"))
+						.boardCommentLevel(rs.getInt("BOARD_COMMENT_LEVEL"))
+						.boardCommentWriter(rs.getString("BOARD_COMMENT_WRITER"))
+						.boardCommentContent(rs.getString("BOARD_COMMENT_CONTENT"))
+						.boardRef(rs.getInt("BOARD_REF"))
+						.boardCommentRef(rs.getInt("BOARD_COMMENT_REF"))
+						.boardCommentDate(rs.getDate("BOARD_COMMENT_DATE"))
+						.build();
+	}
 }

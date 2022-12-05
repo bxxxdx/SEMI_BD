@@ -36,10 +36,18 @@
 			<%for(int i=0;i<list.size();i++){ %>
 				<tr>
 					<td><%=list.get(i).getBoardNo() %></td>
-					<td><a href="<%=request.getContextPath()%>/board/readBoard.do?boardNo=<%=list.get(i).getBoardNo()%>"><%=list.get(i).getBoardTitle() %></a></td>
+					<td>
+						<a href="<%=request.getContextPath()%>/board/readBoard.do?boardNo=<%=list.get(i).getBoardNo()%>"><%=list.get(i).getBoardTitle() %></a>
+					</td>
 					<td><%=list.get(i).getBoardWriter() %></td>
 					<td><%=list.get(i).getBoardDate() %></td>
-					<td><%=list.get(i).getBoardRenamedFileName() %></td>
+					<td>
+						<%if(list.get(i).getBoardOriginalFileName() != null) { %>
+							<img src = "<%=request.getContextPath()%>/images/file.png">
+						<%} else {%>
+							첨부파일없음
+						<%} %>
+					</td>
 					<td><%=list.get(i).getBoardReadCount() %></td>
 				</tr>
 			<%} %>

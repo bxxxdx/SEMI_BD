@@ -1,15 +1,18 @@
 package com.web.board.controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.web.board.model.service.BoardService;
 import com.web.board.model.vo.Board;
+import com.web.board.model.vo.BoardComment;
 
 /**
  * Servlet implementation class ReadBoardServlet
@@ -33,9 +36,37 @@ public class ReadBoardServlet extends HttpServlet {
 
 		int boardNo = Integer.parseInt(request.getParameter("boardNo"));
 		
-		Board b = BoardService.getBoardService().searchBoardNo(boardNo);
+		//조회수 설정
+		Cookie[] cookies = request.getCookies();
+		String boardRead="";
+		boolean readFlag = false;
+		if(cookies!=null) {
+			for(Cookie c : cookies) {
+				String name = c.getName();//key값
+				String value = c.getValue();
+				if(name.equals("boardRead")) {
+					boardRead = value;
+					if(value.contains("|"+ boardNo + "|")) {
+						readFlag = true;
+					}						
+					break;
+				}
+			}
+		}
+		if(!readFlag) {
+			//읽은적이 없다 -> 쿠키에 현재 게시글 번호 저장 && 조회수 증가
+			Cookie c = new Cookie("boardRead", (boardRead+ "|" + boardNo + "|"));
+			c.setMaxAge(60*60*24);
+			response.addCookie(c);
+		}
 		
+		Board b = BoardService.getBoardService().searchBoardNo(boardNo, readFlag);
 		request.setAttribute("board", b);
+		
+		List<BoardComment> bcs = BoardService.getBoardService().searchBoardComments(boardNo);
+		bcs.forEach(v->System.out.println(v));
+		request.setAttribute("boardComment", bcs);
+		
 		
 		request.getRequestDispatcher("/views/board/readBoard.jsp").forward(request, response);
 		

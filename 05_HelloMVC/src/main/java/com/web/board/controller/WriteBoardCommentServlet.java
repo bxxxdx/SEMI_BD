@@ -8,22 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
-
 import com.web.board.model.service.BoardService;
-import com.web.board.model.vo.Board;
+import com.web.board.model.vo.BoardComment;
 
 /**
- * Servlet implementation class WriteBoardEndServlet
+ * Servlet implementation class WriteBoardCommentServlet
  */
-@WebServlet("/board/writeBoardEnd.do")
-public class WriteBoardEndServlet extends HttpServlet {
+@WebServlet("/board/writeBoardComment.do")
+public class WriteBoardCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public WriteBoardEndServlet() {
+    public WriteBoardCommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,32 +30,26 @@ public class WriteBoardEndServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		BoardComment bc = BoardComment.builder()
+							.boardRef(Integer.parseInt(request.getParameter("boardref")))
+							.boardCommentContent(request.getParameter("content"))
+							.boardCommentLevel(Integer.parseInt(request.getParameter("level")))
+							.boardCommentWriter(request.getParameter("commentWriter"))
+							.boardCommentRef(Integer.parseInt(request.getParameter("commentref")))
+							.build();
 		
-		if(!ServletFileUpload.isMultipartContent(request)) {
-			response.sendRedirect(request.getContextPath());
-		} else {
-			String path = request.getServletContext().getRealPath("/upload/notice");
-			
+		int result = BoardService.getBoardService().insertBoardComment(bc);
+		
+		String msg="", loc="";
+		if(result>0) {
+			msg = "댓글등록 성공";
 		}
-		
-		Board b = Board.builder()
-				.boardTitle(request.getParameter("boardTitle"))
-				.boardWriter(request.getParameter("boardWriter"))
-				.boardContent(request.getParameter("boardContent"))
-				.build();
-		
-		int result = BoardService.getBoardService().insertBoard(b);
-		
-		String msg="",loc="";
-		if(result > 0) {
-			msg = "게시물이 등록되었습니다.";
-			loc = "/board/boardList.do";
-		}else {
-			msg = "게시물 등록 실패 -.-";
-			loc = "/board/writeBoard.do";
+		else {
+			msg = "댓글등록 실패";
 		}
-		request.setAttribute("msg",msg);
-		request.setAttribute("loc",loc);
+		loc="/board/readBoard.do?boardNo="+bc.getBoardRef();
+		request.setAttribute("msg", msg);
+		request.setAttribute("loc", loc);
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 	}
 
