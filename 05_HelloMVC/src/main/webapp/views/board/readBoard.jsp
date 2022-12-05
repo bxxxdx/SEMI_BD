@@ -15,7 +15,8 @@
     table#tbl-board td {border:1px solid; padding: 5px 0 5px 10px; text-align:left;}
      div#comment-container button#btn-insert{width:60px;height:50px; color:white;
     background-color:#3300FF;position:relative;top:-20px;}
-        /*댓글테이블*/
+    
+    /*댓글테이블*/
     table#tbl-comment{width:580px; margin:0 auto; border-collapse:collapse; clear:both; } 
     table#tbl-comment tr td{border-bottom:1px solid; border-top:1px solid; padding:5px; text-align:left; line-height:120%;}
     table#tbl-comment tr td:first-of-type{padding: 5px 5px 5px 50px;}
@@ -90,17 +91,30 @@
 			</form>
 		</div>
 		<table id="tbl-comment">
-			<tr class="level1">
-   				<td>
-				    <sub class="comment-writer"></sub>
-				    <sub class="comment-date"></sub>
-				    <br>                  
-   				</td>
-				<td>
-				     댓글(로그인한 사용자만), 삭제버튼만들기 (작성자, 관리자만삭제가능)
-				</td>
-			</tr>
+			<%for(BoardComment bc : bcs){ %>
+				<tr class="level1">
+	   				<td style="width:200px">
+					    <sub class="comment-writer"><%=bc.getBoardCommentWriter() %></sub>
+					    <sub class="comment-date"><%=bc.getBoardCommentDate() %></sub>
+					    <br>                  
+	   				</td>
+					<td>
+					     <%=bc.getBoardCommentContent() %>
+					</td>
+					<%if(loginMember!=null) {%>
+						<td>
+							<button>댓글</button>
+						</td>
+					<%} %>
+					<%if(loginMember != null &&(loginMember.getUserId().equals(b.getBoardWriter()) || loginMember.getUserId().equals("admin"))) { %>
+						<td>
+							<button>삭제</button>
+						</td>
+					<%} %>
+				</tr>
+			<%} %>
 		</table>
+		<!-- 댓글(로그인한 사용자만), 삭제버튼만들기 (작성자, 관리자만삭제가능) -->
 	</div>
 </section>
 <script>
