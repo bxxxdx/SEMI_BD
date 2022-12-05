@@ -13,8 +13,8 @@
 </style>
 
 <%@ include file = "/views/common/header.jsp" %>
-<section>
-	<div id="notice-container">
+	<section id="notice-container">
+		<h2>공지사항</h2>
         <table id="tbl-notice">
 	        <tr>
 	            <th>제 목</th>
@@ -28,7 +28,9 @@
 	            <th>첨부파일</th>
 	            <td>
 	           		<%if(n.getFilePath() != null) {%>
-	           		<%= n.getFilePath() %>
+	           			<img src="<%=request.getContextPath()%>/images/file.png" width="20" onclick="fn_fileDown('<%=n.getFilePath()%>');">&nbsp;<%=n.getFilePath() %>
+	           		<%} else {%>
+	           			첨부파일없음
 	           		<%} %>
 	            </td>
 	        </tr>
@@ -40,18 +42,23 @@
 		        <tr>
 		            <th colspan="2">
 		                <input type="button" value="수정하기" onclick="location.replace('<%=request.getContextPath()%>/notice/updateNotice.do?noticeNo=<%=n.getNoticeNo()%>')">
-		                <input type="button" value="삭제하기" onclick="fn_delete();">
+		                <input type="button" value="삭제하기" onclick="fn_delete('<%=n.getNoticeNo()%>','<%=n.getFilePath()%>');">
 		            </th>
 		        </tr>
 	        <%} %>
     	</table>
-    </div>
-</section>
+    </section>
 <script>
-	const fn_delete = () => {
-		let result = confirm("게시물을 정말 삭제하시겠습니까?");
-		if(result) {
-			location.replace("<%=request.getContextPath()%>/notice/deleteNotice.do?noticeNo=<%=n.getNoticeNo()%>");			
+	const fn_fileDown = (fileName) => {
+		//다운로드 서비스 호출
+		if(confirm("다운로드 받으시겠습니까?")){
+			location.assign("<%=request.getContextPath()%>/notice/fileDown.do?fileName="+fileName);
+		}
+	}
+	
+	const fn_delete = (noticeNo, fileName) => {
+		if(confirm("게시물을 정말 삭제하시겠습니까?")) {
+			location.replace("<%=request.getContextPath()%>/notice/deleteNotice.do?noticeNo="+noticeNo+"&fileName="+fileName);			
 		}
 	}
 </script>

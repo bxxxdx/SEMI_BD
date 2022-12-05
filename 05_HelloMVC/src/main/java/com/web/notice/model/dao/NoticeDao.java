@@ -83,6 +83,7 @@ public class NoticeDao {
 			pstmt.setString(1, n.getNoticeTitle());
 			pstmt.setString(2, n.getNoticeWriter());
 			pstmt.setString(3, n.getNoticeContent());
+			pstmt.setString(4, n.getFilePath());
 			result = pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

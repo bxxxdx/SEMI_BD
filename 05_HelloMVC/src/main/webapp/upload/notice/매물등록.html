@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>매물등록</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poor+Story&display=swap" rel="stylesheet">
+
+    <style>
+        /* div{
+            border: 1px black solid;
+        }
+        span{
+            border: 1px blue solid;
+        } */
+        body{
+            background-color: #d9dfd4;
+        }
+        /* 상단바 고정메뉴 */
+        header{
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Poor Story', cursive;
+        }
+        div.menu{
+            font-size:35px;
+            font-weight:bolder;
+            vertical-align:middle;
+            margin-top:45px;
+        }
+        .buttonContainer>button{    
+            width:150px;
+            height:40px;     
+            background-color: rgb(7, 90, 42);
+            color:white;
+            border:0px;
+        }
+        .buttonContainer>button>p{
+            font-weight: bolder;
+            font-size:17px;
+        }
+        #loginBtn{
+            margin-top:20px;
+            margin-right:20px;
+        }
+        p{
+            margin:0px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 상단바 고정메뉴 -->
+    <header>
+        <div id="logoContainer">
+            <img src="./이미지/방방로고.png" alt="" width="140px" height="100px">
+        </div>
+        <div class="menu">
+            <p>지도</p>
+        </div>
+        <div class="menu">
+            <p>마이페이지</p>
+        </div>
+        <div class="menu">
+            <p>방내놓기</p>
+        </div>
+        <div class="menu">
+            <p>중개사 등록</p>
+        </div>
+        <div class="buttonContainer" id="loginBtn">
+            <button><p>로그인 | 회원가입</p></button>
+        </div>
+    </header>
+
+    <!-- 매물등록메뉴 -->
+    <style>
+        #wrap{
+            background-color: white;
+            width: 60%;
+            margin-left: 19%;
+            margin-top: 2%;
+        }
+        #wrap>div,h4,h2{
+            margin-left: 20px;
+        }
+        .greytext{
+            background-color: white; 
+            text-align:center;
+            margin-left: -5px;
+            width: 35px;
+            border: 1px solid rgb(60, 60, 60);
+            font-size: 13px;
+            color: rgb(60, 60, 60);
+        }
+        .redtext{
+            color: red;
+        }
+        .greenbutton{
+            background-color: rgb(7, 90, 42);
+            color:white;
+            /* border-width: 1px; */
+        }
+        #wrap>hr{
+            width: 95%;
+            margin-top: 25px;
+        }
+    </style>
+    <div id="all" style="display:flex;">
+        <div id="wrap">
+            <h2><매물 등록></h2>
+
+            <h4>🔳 기본정보</h4>
+            <div id="address">
+                <span class="redtext">주소*</span>
+                &nbsp;
+                <input type="text" size="60%" name="addressIn" style="background-color: lightgrey; border-width:1px; height: 18px;">
+                <button class="greenbutton">주소찾기</button>
+            </div>
+            <br>
+            <div id="floor" style="display: flex; align-text: center;">
+                <span class="redtext" style="margin-right: 16px;">층수*</span>
+                <select name="floorSelect" style="margin-right: 5px;">
+                    <option value="지상">지상</option>
+                    <option value="반지하">반지하</option>
+                    <option value="옥탑">옥탑</option>
+                </select>
+                <input type="number" name="floorIn" min="1" placeholder="숫자를 입력해주세요">
+                <span class="greytext">층</span>
+            </div>
+            <hr style="width: 95%;">
+
+            <h4>🔳 거래정보</h4>
+            <div id="price" style="display: flex; align-items: center;">
+                <span class="redtext" style="margin-right: 5px;">거래종류*</span>
+                &nbsp; 
+                <button class="greenbutton">➕ 전세</button>
+                &nbsp;
+                <button class="greenbutton">➕ 월세</button>
+                &nbsp;
+                <span style="font-size: 10px;">
+                    * 최대 5개까지만 등록이 가능합니다. <br>
+                    * 처음에 선택한 거래종류가 우선 노출됩니다.
+                </span>
+                <div id="pirceDiv"></div>
+            </div>
+            <br>
+            <div id="cost" style="display: flex; align-text: center;">
+                <span class="redtext" style="margin-right: 16px;">관리비*</span>
+                &nbsp;
+                <input type="radio" name="costSelect" value="있음">있음
+                <input type="number" name="costIn" min="1" placeholder="금액을 입력해주세요" style="margin-left: 5px;">
+                <span class="greytext" style="margin-right: 16px;">만원</span>
+                <input type="radio" name="costSelect" value="없음">없음
+            </div>
+            <br>
+            <div id="costInclude">
+                <span>관리비 포함항목</span>
+                &nbsp;
+                <input type="checkbox" name="costE" value="전기">전기
+                <input type="checkbox" name="costG" value="가스">가스
+                <input type="checkbox" name="costW" value="수도">수도
+            </div>
+            <hr style="width: 95%;">
+
+            <h4>🔳 방 정보</h4>
+            <div id="room">
+                <span class="redtext">방 구조*</span>
+                &nbsp;
+                <input type="radio" name="roomSelect" value="원룸(오픈형)">원룸(오픈형)
+                <input type="radio" name="roomSelect" value="원룸(분리형)">원룸(분리형)
+                <input type="radio" name="roomSelect" value="복층">복층
+                <input type="radio" name="roomSelect" value="투룸">투룸
+            </div>
+            <br>
+            <div id="area" style="display: flex; align-text: center;">
+                <span class="redtext" style="margin-right: 15px;">면적*</span>
+                &nbsp;
+                <input type="number" name="areaIn" step="0.01">
+                <span class="greytext">㎡</span>
+            </div>
+            <br>
+            <div id="expiryDate">
+                <span class="redtext">공실예정일*</span>
+                &nbsp;
+                <input type="date" name="exdayIn">
+                &nbsp;
+                <input type="radio" value="공실" name="edSelect">공실
+                <input type="radio" value="협의입주" name="edSelect">협의입주
+            </div>
+            <hr style="width: 95%;">
+
+            <h4>🔳 추가 정보</h4>
+            <div id="animal">
+                <span>반려동물 가능여부</span>
+                &nbsp;
+                <input type="radio" value="가능" name="aniSelect">가능
+                <input type="radio" value="불가능" name="aniSelect">불가능
+            </div>
+            <br>
+            <div id="parking">
+                <span>주차 가능여부</span>
+                &nbsp;
+                <input type="radio" value="가능" name="parkSelect">가능
+                <input type="radio" value="불가능" name="parkSelect">불가능
+            </div>
+            <br>
+            <div id="comment" style="display: flex; align-items: center;">
+                <span>상세 설명</span>
+                &nbsp;
+                <textarea cols="50" rows="5" style="resize: none;" placeholder="2000자 이내로 작성해주세요"></textarea>
+            </div>
+            <hr style="width: 95%;">
+
+            <h4>🔳 사진</h4>
+            <div id="photo">
+                <button>추가</button>
+                <span style="font-size: 10px; color:red">*5개까지만 추가 가능합니다.</span>
+            </div>
+            <br>
+
+            <div id="addroom" style="text-align:center">
+                <button class="greenbutton" style="width: 300px; height: 30px;">등록하기</button>
+            </div>
+        </div>
+
+        <!-- 네비게이션 바 -->
+        <style>
+            #navi{
+                background-color: rgb(113, 112, 112);
+                color: white;
+                position: fixed;
+                /* left: 1060px; */
+                left: 85%;
+                /* bottom: 300px; */
+                bottom: 20%;
+                /* top : 130px; */
+                top: 16%;
+                width: 150px;
+                height: 530px;
+                /* margin-top: 20px; */
+            }
+            #navi>h4{
+                margin-bottom: 5px;
+                font-size: 14px;
+            }
+            .aTag{
+                text-decoration: none;
+                color: white; 
+                margin-left: 30px;
+                margin-top: 10px;
+                font-size: 12px;
+            }
+            #navi>hr{
+                border: 1px solid white; 
+                width:80%;
+            }
+        </style>
+        <div id="navi">
+            <h4>기본정보</h4>
+            <a href="#address" class="aTag">주소</a> <br>
+            <a href="#floor" class="aTag">층수</a> <br>
+            <hr>
+
+            <h4>거래정보</h4>
+            <a href="#price" class="aTag">거래종류(금액)</a> <br>
+            <a href="#cost" class="aTag">관리비</a> <br>
+            <a href="#costInclude" class="aTag">관리비 포함항목</a> <br>
+            <hr>
+
+            <h4>방 정보</h4>
+            <a href="#room" class="aTag">방 구조</a> <br>
+            <a href="#area" class="aTag">면적</a> <br>
+            <a href="#expiryDate" class="aTag">공실예정일</a> <br>
+            <hr>
+
+            <h4>추가 정보</h4>
+            <a href="#animal" class="aTag">반려동물가능여부</a> <br>
+            <a href="#parking" class="aTag">주차가능여부</a> <br>
+            <a href="#comment" class="aTag">상세 설명</a> <br>
+            <hr> 
+
+            <h4>사진</h4>
+            <a href="#photo" class="aTag">방사진 등록</a> <br>
+        </div>
+    </div>
+</body>
+</html>

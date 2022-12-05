@@ -62,32 +62,45 @@ public class WriteNoticeEndServlet extends HttpServlet {
 			
 			//매개변수 있는 생성자 MultipartRequest클래스를 생성 ㄱㄱ
 			MultipartRequest mr = new MultipartRequest(request, path, maxSize,encoding,dfr);
-			 
+			
+			//클라이언트가 보낸 데이터를 DB에 저장하는 기능
+			//파일을 저장하면서 재정의된 파일명을 저장해야 한다.
+			String noticeTitle = mr.getParameter("noticeTitle");
+			String noticeWriter = mr.getParameter("noticeWriter");
+			String noticeContent = mr.getParameter("noticeContent");
+			//파일이름(rename 된)
+			String fileName = mr.getFilesystemName("upFile");
+			String oriName = mr.getOriginalFileName("upFile");
+			
+			Notice n = Notice.builder()
+				.noticeTitle(noticeTitle)
+				.noticeWriter(noticeWriter)
+				.noticeContent(noticeContent)
+				.filePath(fileName)
+				.build();
+			System.out.println(n);
+			System.out.println(oriName);
+			
+			int result = NoticeService.getNoticeService().insertNotice(n);
+			
+			String msg="",loc="";
+			if(result>0) {
+				msg = "공지사항 등록이 완료되었습니다.";
+				loc = "/notice/noticeList.do";
+			} else {
+				msg = "공지사항 등록 실패";
+				loc = "/notice/writeNotice.do";
+			}
+			request.setAttribute("msg", msg);
+			request.setAttribute("loc", loc);
+			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 		}
 		
-		String noticeTitle = request.getParameter("noticeTitle");
-		String noticeWriter = request.getParameter("noticeWriter");
-		String noticeContent = request.getParameter("noticeContent");
 		
-		Notice n = Notice.builder()
-						.noticeTitle(noticeTitle)
-						.noticeWriter(noticeWriter)
-						.noticeContent(noticeContent)
-						.build();
+
 		
-		int result = NoticeService.getNoticeService().insertNotice(n);
 		
-		String msg="",loc="";
-		if(result>0) {
-			msg = "공지사항 등록이 완료되었습니다.";
-			loc = "/notice/noticeList.do";
-		} else {
-			msg = "공지사항 등록 실패";
-			loc = "/notice/writeNotice.do";
-		}
-		request.setAttribute("msg", msg);
-		request.setAttribute("loc", loc);
-		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+
 	}
 
 	/**
