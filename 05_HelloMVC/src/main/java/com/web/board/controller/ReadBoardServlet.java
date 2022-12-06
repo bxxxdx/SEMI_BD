@@ -64,9 +64,13 @@ public class ReadBoardServlet extends HttpServlet {
 		request.setAttribute("board", b);
 		
 		List<BoardComment> bcs = BoardService.getBoardService().searchBoardComments(boardNo);
-		bcs.forEach(v->System.out.println(v));
 		request.setAttribute("boardComment", bcs);
 		
+		if(bcs!=null) {
+			bcs.forEach(v->System.out.println(v));
+		} else {
+			System.out.println("bcs 없음!!");
+		}
 		
 		request.getRequestDispatcher("/views/board/readBoard.jsp").forward(request, response);
 		

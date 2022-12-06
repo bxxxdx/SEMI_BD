@@ -85,33 +85,44 @@
 				<textarea name="content" cols="55" rows="3"></textarea>
 				<input type="hidden" name="boardref" value="<%=b.getBoardNo()%>">
 				<input type="hidden" name="level" value="1">
-				<input type="hidden" name="commentref" value="0">;
+				<input type="hidden" name="commentref" value="0">
 				<input type="hidden" name="commentWriter" value="<%=loginMember!=null?loginMember.getUserId():""%>">
 				<button type="submit" id="btn-insert">등록</button>
 			</form>
 		</div>
 		<table id="tbl-comment">
-			<%for(BoardComment bc : bcs){ %>
-				<tr class="level1">
-	   				<td style="width:200px">
-					    <sub class="comment-writer"><%=bc.getBoardCommentWriter() %></sub>
-					    <sub class="comment-date"><%=bc.getBoardCommentDate() %></sub>
-					    <br>                  
-	   				</td>
-					<td>
-					     <%=bc.getBoardCommentContent() %>
-					</td>
-					<%if(loginMember!=null) {%>
-						<td>
-							<button>댓글</button>
-						</td>
+			<%if(bcs != null){ %>
+				<%for(BoardComment bc : bcs){ %>
+					<%if(bc.getBoardCommentLevel() == 1){ %>
+						<tr class="level1">
+			   				<td style="width:200px">
+							    <sub class="comment-writer"><%=bc.getBoardCommentWriter() %></sub>
+							    <sub class="comment-date"><%=bc.getBoardCommentDate() %></sub>
+							    <br> 
+							    <%=bc.getBoardCommentContent() %>                 
+			   				</td>
+							<%if(loginMember!=null) {%>
+								<td>
+									<button class="btn-reply" value="<%=bc.getBoardCommentNo()%>">답글</button>
+								<%if(loginMember.getUserId().equals(bc.getBoardCommentWriter()) || loginMember.getUserId().equals("admin")) { %>
+									<button class="btn-delete">삭제</button>
+								<%} %>
+								</td>
+							<%} %>
+						</tr>
+					<%} else { %>
+						<tr class="level2">
+							<td>
+								<sub><%=bc.getBoardCommentWriter() %></sub>
+								<sub><%=bc.getBoardCommentDate() %></sub>
+								<br>
+								<%=bc.getBoardCommentContent() %>
+							</td>
+							<td>
+							</td>
+						</tr>
 					<%} %>
-					<%if(loginMember != null &&(loginMember.getUserId().equals(b.getBoardWriter()) || loginMember.getUserId().equals("admin"))) { %>
-						<td>
-							<button>삭제</button>
-						</td>
-					<%} %>
-				</tr>
+				<%} %>
 			<%} %>
 		</table>
 		<!-- 댓글(로그인한 사용자만), 삭제버튼만들기 (작성자, 관리자만삭제가능) -->
@@ -130,8 +141,21 @@
 				alert("로그인 후 이용할 수 있습니다.");
 				$("#userId").focus();
 			<%}%>
-		})
+		});
 		
+		$(".btn-reply").click(e=>{
+			const tr=$("<tr>");
+			const form=$(".comment-editor>form").clone();
+			form.find("textarea").attr({"cols":"40","rows":"1"});
+			form.find("input[name=level]").val("2");
+			form.find("input[name=commentref]").val($(e.target).val());
+			form.find("button").removeAttr("id").addClass("btn-insert2");
+			const td=$("<td>").attr("colspan","2").append(form);
+			tr.append(td);
+			tr.find("td").css("display","none");
+			tr.insertAfter($(e.target).parents("tr")).children("td").slideDown(800);
+			$(e.target).off("click");
+		})
 		
 	})
 </script>

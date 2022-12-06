@@ -9,23 +9,44 @@
     <nav style="background-color: beige;">
         <div id="searchContainer">
             <div id="rentType" class="option" style="margin-left:10px;">
-                <button>월세,전세</button>
-                <br>
-                <div style="background-color:red;">
-                    월세,전세
+                <button class="optionButton">월세,전세</button>
+                <div class="optionMenu" style="border:1px solid red">
+                    <div>
+                        <p>거래유형</p>
+                        <p>닫기</p>
+                    </div>
+                    <div><input type="checkbox" value="월세"><p>월세</p></div>
+                    <div><input type="checkbox" value="전세"><p>전세</p></div>
+                    <div class="twoSpace">
+                        <div><p>보증금</p></div>
+                        <div><p>전체</p></div>
+                    </div>    
+                    <div>
+                        <input type="range" min="0" max="10000" step="500" style="width:200px;">
+                    </div>
+                    <div class="twoSpace">
+                        <div><p>월세</p></div>
+                        <div><p>전체</p></div>
+                    </div>    
+                    <div>
+                        <input type="range" min="0" max="1000" step="50" style="width:200px;">
+                    </div>
+                    <div class="buttonContainer">
+                        <button style="width:100px;">초기화</button>
+                        &nbsp;&nbsp;
+                        <button style="width:100px;">적용</button>
+                    </div>
                 </div>
             </div>
             <div id="roomStructure" class="option" style="margin-left:100px;">
-                <button>방 구조</button>
-                <br>
-                <div style="background-color:blue;">
+                <button class="optionButton">방 구조</button>
+                <div class="optionMenu" style="background-color:blue;">
                     방 구조
                 </div>
             </div>
             <div id="applianceOption" class="option" style="margin-left:175px;">
-                <button>가전옵션</button>
-                <br>
-                <div style="background-color:green;">
+                <button class="optionButton">가전옵션</button>
+                <div class="optionMenu" style="background-color:green;">
                     가전옵션
                 </div>
             </div>
@@ -45,10 +66,18 @@
     
     
     <script>
+        let hideFlag = true;
         //옵션 버튼 클릭 이벤트
         $(()=>{
-            $(".option").click((e)=>{
-                console.log(e.target);
+            $(".optionButton").click((e)=>{
+                console.log($(e.target).next());
+                $(".optionMenu").hide();
+                if(hideFlag){
+                    $(e.target).next().show();
+                    hideFlag = false;
+                } else {
+                    hideFlag = true;
+                }
             });
             
 
