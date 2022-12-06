@@ -18,12 +18,61 @@ div#gudongContainer{
 div.option{
    position:absolute;
 }
-div.option div{ 
+div.option>div{ 
     position:relative;
-    height:230px;
-    width:150px;
-    z-index : 1;
+    height:280px;
+    width:230px;
+    z-index : 10;
+    display:none;
 }
+div.option p {
+    margin-top:0px;
+    margin-bottom: 0px;
+    margin-left:10px;
+    margin-right:10px;
+}
+
+
+div.optionMenu{
+    background-color: beige;
+}
+div.optionMenu>div{
+    display:flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
