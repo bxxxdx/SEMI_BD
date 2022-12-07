@@ -4,6 +4,8 @@ nav{
     display:flex;
     justify-content: space-between;
     height:60px;
+    background-color: "#D9DFD4";
+    margin-top:15px;
 }
 div#searchContainer{
     display:flex;
@@ -34,7 +36,7 @@ div.option p {
 
 
 div.optionMenu{
-    background-color: #D9DFD4;
+    background-color: beige;
     border : 1px solid red;
 }
 div.optionMenu>div{
@@ -54,17 +56,17 @@ div#map{
     height:700px;
 }
 div#listContainer{
-    width:400px;
+    width:500px;
     height:700px;
-    background-color: #D9DFD4;
-    border: 1px solid red;
+    background-color: white;
+    overflow:scroll;
 }
 div.propertyContainer{
     display:flex;
-    width:400px;
+    width:350px;
     height:150px;
-    border: 1px solid magenta;
-    padding:10px;
+    padding:10px 10px 10px;
+    border-bottom : 1px solid gray;
 }
 div.propertyImgContainer{
 
@@ -76,7 +78,6 @@ div.propertyImgContainer>img{
 div.propertyDetailContainer{
     padding-left : 15px;
 }
-
 
 
 

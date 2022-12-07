@@ -6,7 +6,7 @@
 %>
 <%@ include file ="/views/common/header.jsp" %>
 <link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/test.css?ver=1">
-    <nav style="background-color: beige;">
+    <nav>
         
         <div id="searchContainer">
             <div id="rentType" class="option buttonContainer" style="margin-left:10px;">
@@ -16,8 +16,8 @@
                         <p>거래유형</p>
                         <p>닫기</p>
                     </div>
-                    <div><label for=""><input type="checkbox" value="월세"> 월세</label></div>
-                    <div><label for=""><input type="checkbox" value="전세"> 전세</label></div>
+                    <div><label for=""><input type="checkbox" value="월세" checked> 월세</label></div>
+                    <div><label for=""><input type="checkbox" value="전세" checked> 전세</label></div>
                     <div class="twoSpace">
                         <div><p>보증금</p></div>
                         <div><p>전체</p></div>
@@ -47,10 +47,10 @@
                         <p>방 구조</p>
                         <p>닫기</p>
                     </div>
-                    <div><label for=""><input type="checkbox" value="오픈형(원룸)"> 오픈형(원룸)</label></div>
-                    <div><label for=""><input type="checkbox" value="분리형(원룸)"> 분리형(원룸)</label></div>
-                    <div><label for=""><input type="checkbox" value="복층"> 복층</label></div>
-                    <div><label for=""><input type="checkbox" value="투룸"> 투룸</label></div>
+                    <div><label for=""><input type="checkbox" value="오픈형(원룸)" checked> 오픈형(원룸)</label></div>
+                    <div><label for=""><input type="checkbox" value="분리형(원룸)" checked> 분리형(원룸)</label></div>
+                    <div><label for=""><input type="checkbox" value="복층" checked> 복층</label></div>
+                    <div><label for=""><input type="checkbox" value="투룸" checked> 투룸</label></div>
                     <br>
                     <div class="buttonContainer">
                         <button style="width:100px;">초기화</button>
@@ -66,11 +66,12 @@
                         <p>가전옵션</p>
                         <p>닫기</p>
                     </div>
-                    <div><label for=""><input type="checkbox" value="에어컨"> 에어컨</label></div>
-                    <div><label for=""><input type="checkbox" value="에어컨"> 세탁기</label></div>
-                    <div><label for=""><input type="checkbox" value="에어컨"> 냉장고</label></div>
-                    <div><label for=""><input type="checkbox" value="에어컨">  인덕션&가스레인지</label></div>
-                    <div><label for=""><input type="checkbox" value="에어컨"> 전자레인지</label></div>
+                    <div><label for=""><input type="checkbox" value="전체" checked> 무관</label><span style="font-size:10px;margin-top:5px;">중복선택이 가능합니다.</span></div>
+                    <div><label for=""><input type="checkbox" value="에어컨"> 에어컨 포함</label></div>
+                    <div><label for=""><input type="checkbox" value="세탁기"> 세탁기 포함</label></div>
+                    <div><label for=""><input type="checkbox" value="냉장고"> 냉장고 포함</label></div>
+                    <div><label for=""><input type="checkbox" value="인덕션"> 인덕션 포함</label></div>
+                    <div><label for=""><input type="checkbox" value="전자레인지"> 전자레인지 포함</label></div>
                     <br>
                     <div class="buttonContainer">
                         <button style="width:100px;">초기화</button>
@@ -80,10 +81,10 @@
                 </div>
             </div>
         </div>
-        <div id="gudongContainer">서울시 
-            <select name="gu">
+        <div id="gudongContainer"><span style="font-size:20px;">서울시</span>&nbsp;
+            <select name="gu" style="width:100px;height:30px;font-size:20px;font-weight:bolder;">
             </select>
-            <select name="dong">
+            <select name="dong" style="width:100px;height:30px;font-size:20px;font-weight:bolder;">
             </select>
         </div>
     </nav>
@@ -93,9 +94,12 @@
 
 
 
-    <!-- 지도를 표시할 div 입니다 -->
+    
     <section>
+        <!-- 지도를 표시할 div 입니다 -->
         <div id="map"></div>
+
+        <!-- 매물 목록을 표시할 div -->
         <div id="listContainer">
 
             <div class="propertyContainer">
@@ -103,7 +107,7 @@
                     <img src="<%=request.getContextPath()%>/upload/property/property1.jpg" alt="">
                 </div>
                 <div class="propertyDetailContainer">
-                    <div><h2>원룸(오픈형)</h2></div>
+                    <div><h3>원룸(오픈형)</h3></div>
                     <div>월세 1000/50</div>
                     <div>관리비 5만</div>
                     <div>서울시 관악구 신림동</div>
@@ -115,7 +119,7 @@
                     <img src="<%=request.getContextPath()%>/upload/property/property2.JPG" alt="">
                 </div>
                 <div class="propertyDetailContainer">
-                    <div><h2>원룸(분리형)</h2></div>
+                    <div><h3>원룸(분리형)</h3></div>
                     <div>월세 1000/55</div>
                     <div>관리비 6만</div>
                     <div>서울시 관악구 봉천동</div>
@@ -127,7 +131,7 @@
                     <img src="<%=request.getContextPath()%>/upload/property/property3.JPG" alt="">
                 </div>
                 <div class="propertyDetailContainer">
-                    <div><h2>복층형 원룸</h2></div>
+                    <div><h3>복층형 원룸</h3></div>
                     <div>전세 2억 5천</div>
                     <div>관리비 8만</div>
                     <div>서울시 송파구 잠실동</div>
@@ -139,13 +143,37 @@
                     <img src="<%=request.getContextPath()%>/upload/property/property1.jpg" alt="">
                 </div>
                 <div class="propertyDetailContainer">
-                    <div><h2>원룸(오픈형)</h2></div>
+                    <div><h3>원룸(오픈형)</h3></div>
                     <div>월세 1000/50</div>
                     <div>관리비 5만</div>
                     <div>서울시 관악구 신림동</div>
                 </div>
             </div>
-        </div>    
+
+            <div class="propertyContainer">
+                <div class="propertyImgContainer">
+                    <img src="<%=request.getContextPath()%>/upload/property/property2.JPG" alt="">
+                </div>
+                <div class="propertyDetailContainer">
+                    <div><h3>원룸(분리형)</h3></div>
+                    <div>월세 1000/55</div>
+                    <div>관리비 6만</div>
+                    <div>서울시 관악구 봉천동</div>
+                </div>
+            </div>
+
+            <div class="propertyContainer">
+                <div class="propertyImgContainer">
+                    <img src="<%=request.getContextPath()%>/upload/property/property3.JPG" alt="">
+                </div>
+                <div class="propertyDetailContainer">
+                    <div><h3>복층형 원룸</h3></div>
+                    <div>전세 2억 5천</div>
+                    <div>관리비 8만</div>
+                    <div>서울시 송파구 잠실동</div>
+                </div>
+            </div>
+
     </section>
     
     
@@ -175,6 +203,8 @@
         const gu = ["강남구","강동구","강북구","강서구","관악구","광진구","구로구","금천구","노원구","도봉구","동대문구","동작구","마포구","서대문구","서초구","성동구","성북구","송파구","양천구","영등포구", "용산구","은평구", "종로구","중구","중랑구"];
         $(()=>{	
         	drawGu();
+            $("[name=gu]").val("<%=cc.getGu()%>");
+            $("[name=dong]").val("<%=cc.getDong()%>");
         })
 
         const drawGu = () => {
