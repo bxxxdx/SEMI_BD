@@ -14,6 +14,8 @@
 		2. $.get()함수 : 기본 get방식 요청을 처리할때 사용
 		3. $.post()함수 : 기본 post방식 요청을 처리할때 사용
 	</p>
+	
+	
 	<h2>$.ajax()함수 이용하기</h2>
 	<p>
 		매개변수에 요청에 대한 설정내용을 전달
@@ -25,12 +27,15 @@
 		success : 서버요청이 정상적으로 완료됐을때 실행할 callback 함수
 		error(생략가능) : 서버요청이 정상적으로 완료되지 않았을 때 실행할 callback 함수
 	</p>
+	
+	
+	
+	
 	<input id="data">
 	<button id="btn1">기본 $.ajax() 요청하기</button>
 	<button id="btn2">$.get() 요청하기</button>
 	<button id="btn3">$.post() 요청하기</button>
 	<div id="container"></div>
-	
 	<script>
 		$("#btn3").click(e=>{
 			//외않되
@@ -65,6 +70,10 @@
 	
 	</script>
 	
+	
+	
+	
+	
 	<h2>서버에 있는 문서파일 불러오기</h2>
 	<button id="btn4">test.txt 가져오기</button>
 	<div id="container2"></div>
@@ -87,6 +96,10 @@
 			})
 		})
 	</script>
+	
+	
+	
+	
 	
 	<h2>서버에서 전송하는 csv방식의 데이터 처리하기</h2>
 	<p>
@@ -125,6 +138,10 @@
 		})
 	</script>
 	
+	
+	
+	
+	
 	<h2>xml 파일 가져와 처리하기</h2>
 	<button id="btnxml">xml 데이터 가져오기</button>
 	<div id="fiction">
@@ -162,6 +179,89 @@
 			})
 		})
 	</script>
+	
+	
+	
+	
+	
+	<h2>html파일을 받아서 처리하기</h2>
+	<button id="btnhtml">html페이지 받아오기</button>
+	<div id="htmlcontainer"></div>
+	<script>
+		$("#btnhtml").click(e=>{
+			$.get("<%=request.getContextPath()%>/ajax/htmlAjax.do", data=>{
+				console.log(data);
+				$("#htmlcontainer").html(data);
+			});
+		});
+	</script>
+	
+	
+	
+	<h3>서버에 보내준 데이터로 화면 구현하기</h3>
+	<input type="text" id="searchKeyword" list="list">
+	<datalist id="list">
+	</datalist>
+	<button id="btnsearchmember">회원정보조회</button>
+	<h3>회원정보확인</h3>
+	<div id="memberList"></div>	
+	
+	<script>
+		$("#searchKeyword").keyup(e=>{
+			$.ajax({
+				url:"<%=request.getContextPath()%>/searchMember.do",
+				data:{
+					"key":$(e.target).val()
+				},
+				success:data=>{
+					console.log(data);
+					$("datalist#list").html("");
+					const id = data.split(",");
+					id.forEach(v=>{
+						const op = $("<option>").attr("value",v).text(v);
+						$("datalist#list").append(op);
+					})
+				}
+			})
+		})	
+
+		$("#btnsearchmember").click(e=>{
+			$.ajax({
+				url:"<%=request.getContextPath()%>/memberList.do",
+				success:data=>{
+					console.log(data);
+				}
+			})	
+			
+		});
+	
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 </body>
