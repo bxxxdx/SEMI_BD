@@ -38,7 +38,7 @@ public class BoardListServlet extends HttpServlet {
 		} catch (NumberFormatException e) {
 			cPage = 1;
 		}
-		int numPerpage = 10;
+		int numPerpage = 5;
 		
 		//DB에서 board를 가져온다.
 		List<Board> list = BoardService.getBoardService().searchBoardAll(cPage, numPerpage);

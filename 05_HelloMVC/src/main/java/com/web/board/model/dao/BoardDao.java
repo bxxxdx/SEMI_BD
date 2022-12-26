@@ -35,8 +35,10 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		List<Board> list = null;
+		String query = "SELECT * FROM(SELECT ROWNUM AS RNUM, B.* FROM (SELECT * FROM BOARD ORDER BY BOARD_DATE DESC) B) WHERE RNUM BETWEEN ? AND ?";
 		try {
-			pstmt = conn.prepareStatement(sql.getProperty("searchAll"));
+			//pstmt = conn.prepareStatement(sql.getProperty("searchAll"));
+			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, (cPage-1)*numPerpage + 1);
 			pstmt.setInt(2, cPage*numPerpage);
 			rs = pstmt.executeQuery();
