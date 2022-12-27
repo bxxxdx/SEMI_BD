@@ -20,7 +20,7 @@ import com.web.member.model.vo.Member;
 
 /**
  * Servlet implementation class BaskcJsonServlet
- */
+ */ 
 @WebServlet("/ajax/basicJson.do")
 public class BasicJsonServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
