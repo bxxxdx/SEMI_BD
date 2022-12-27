@@ -15,7 +15,7 @@ import javax.websocket.server.ServerEndpoint;
 import com.websocket.model.vo.Message;
 
 @ServerEndpoint(value = "/chatting", encoders = { JsonEncoder.class }, decoders = { JsonDecoder.class })
-public class ChattingServer {
+public class ChattingServer { 
 
 	private List<Session> client = new ArrayList();
 
