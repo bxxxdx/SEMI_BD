@@ -28,9 +28,9 @@
 	<p>원화로 표시 : <fmt:formatNumber value="${numtest1}" type="currency"/></p>
 	<p>원하는 화폐기호 사용하기 : currencySymbol 속성</p>
 	<fmt:formatNumber value="${numtest1}" type="currency" currencySymbol="$"/>	
-	<fmt:formatNumber value="${numtest1}" type="currency" currencySymbol="^.~"/>	
-	
-	<p><fmt:setLocale value="es_ES"/></p>
+	<%-- <fmt:formatNumber value="${numtest1}" type="currency" currencySymbol="^.~"/> --%>	
+	 
+<%-- 	<p><fmt:setLocale value="es_ES"/></p> --%>
 	<p><fmt:formatNumber value="${numtest1}" type="currency"/></p>
 	<p>현재 로케일 확인 ${pageContext.request.locale }</p>
 	
