@@ -80,7 +80,7 @@ public class BoardDao {
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(sql.getProperty("insertBoard"));
-			pstmt.setString(1, b.getBoardTitle());
+			pstmt.setString(1, b.getBoardTitle()); 
 			pstmt.setString(2, b.getBoardWriter());
 			pstmt.setString(3, b.getBoardContent());
 			result = pstmt.executeUpdate();
@@ -167,7 +167,7 @@ public class BoardDao {
 		int result = 0;
 		try {
 			pstmt = conn.prepareStatement(sql.getProperty("insertBoardCommment"));
-			pstmt.setInt(1,bc.getBoardCommentLevel());
+			pstmt.setInt(1,bc.getBoardCommentLevel()); 
 			pstmt.setString(2, bc.getBoardCommentWriter());
 			pstmt.setString(3, bc.getBoardCommentContent());
 			pstmt.setInt(4, bc.getBoardRef());

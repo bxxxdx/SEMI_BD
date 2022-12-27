@@ -17,7 +17,7 @@
 	<p>
 		자바에서 if문을 사용한 것과 동일, 스크립트릿에서 if문을 사용한 것과 동일..!<br>
 		c:if test="조건문 true true" var="조건문의 결과를 저장하는 변수명" ~~~ /c:if<br>
-		
+		 
 	</p>
 	
 	<c:set var="su" value="30"/>

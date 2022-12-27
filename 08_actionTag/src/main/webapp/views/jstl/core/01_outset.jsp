@@ -14,7 +14,7 @@
 		<li>var : 변수명</li>
 		<li>value : 변수명에 저장될 값</li>
 		<li>scope : 변수가 선언되는 객체를 지정</li>
-	</ul>
+	</ul> 
 	<ul>c:out태그 속성
 		<li>value : 페이지에 출력될 값, 변수명(EL표현식으로)</li>
 		<li>default : value에 있는 값이 없을 때 출력될 값</li>

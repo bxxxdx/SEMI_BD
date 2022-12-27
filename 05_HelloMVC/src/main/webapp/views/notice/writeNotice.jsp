@@ -8,7 +8,7 @@
     table#tbl-notice th {width: 125px; border:1px solid; padding: 5px 0; text-align:center;} 
     table#tbl-notice td {border:1px solid; padding: 5px 0 5px 10px; text-align:left;}
 </style>
-<%@ include file = "/views/common/header.jsp" %>
+<%@ include file = "/views/common/header.jsp"%>
 
 <section id="notice-container">
     <h2>공지사항 작성</h2>

@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class BoardComment {
+public class BoardComment { 
 	
 	private int boardCommentNo;
 	private int boardCommentLevel;

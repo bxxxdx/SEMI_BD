@@ -7,7 +7,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class Board {
+public class Board { 
 	private int boardNo;
 	private String boardTitle;
 	private String boardWriter;

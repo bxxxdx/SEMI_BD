@@ -7,7 +7,7 @@ import lombok.Data;
 
 
 @Data
-@Builder
+@Builder 
 public class Member {
 	private String memberId;
 	private String memberPwd;

@@ -6,7 +6,7 @@
 				Animal.builder().name("뽀삐").age(10).gender('남').height(25.5).weight(5.2).build(),
 				Animal.builder().name("아롱이").age(8).gender('여').height(20.2).weight(6).build(),
 				Animal.builder().name("햄찌").age(1).gender('여').height(3.5).weight(2.0).build()
-			);
+		 	);
 
 	request.setAttribute("animals",list);
 

@@ -19,7 +19,7 @@
 	<p>${header }</p>
 	<p>${header.referer }</p>
 	<p>${header["referer"] }</p>
-	<p>${header["user-agent"] }</p>
+	<p>${header["user-agent"] }</p> 
 	
 	
 	

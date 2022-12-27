@@ -12,7 +12,7 @@
 	table#tbl-notice td {border:1px solid; padding: 5px 0 5px 10px; text-align:left;}
 </style>
 
-<%@ include file = "/views/common/header.jsp" %>
+<%@ include file = "/views/common/header.jsp"%>
 	<section id="notice-container">
 		<h2>공지사항</h2>
         <table id="tbl-notice">

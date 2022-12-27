@@ -34,7 +34,7 @@
 			
 				<% for(Member m : list){ %>
 					<tr>
-						<td><%=m.getMemberId() %></td>
+						<td><%=m.getMemberId()%></td>
 						<td><%=m.getMemberName() %></td>
 						<td><%=m.getGender() %></td>
 						<td><%=m.getAge() %></td>

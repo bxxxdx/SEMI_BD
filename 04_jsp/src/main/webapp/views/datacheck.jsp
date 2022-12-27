@@ -32,7 +32,7 @@
 		<%for(Animal a : animals){ %>
 			<% if(a.getWeight()>5){ %>
 				<tr>
-					<td><%=a.getName() %></td>
+					<td><%=a.getName()%></td>
 					<td><%=a.getAge() %>살</td>
 					<td><%=a.getGender() %>성</td>
 					<td><%=a.getHeight() %>cm</td>

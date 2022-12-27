@@ -12,7 +12,7 @@
 	table#tbl-notice{width:100%; margin:0 auto; border:1px solid black; border-collapse:collapse;}
 	table#tbl-notice th, table#tbl-notice td {border:1px solid; padding: 5px 0; text-align:center;} 
 </style>
-<%@ include file = "/views/common/header.jsp" %>
+<%@ include file = "/views/common/header.jsp"%>
 <section id="notice-container">
        <h2>공지사항</h2>
        <%if(loginMember != null && loginMember.getUserId().equals("admin")){ %>

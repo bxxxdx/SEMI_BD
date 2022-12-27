@@ -68,7 +68,7 @@ public class MemberDao {
 	public Member getRsData(ResultSet rs) {
 		Member m = null;;
 		try {
-			m = Member.builder()
+			m = Member.builder() 
 					.memberId(rs.getString("member_id"))
 					.memberName(rs.getString("member_name"))
 					.gender(rs.getString("gender").charAt(0))
